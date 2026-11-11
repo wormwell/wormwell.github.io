@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wormwell — A One-Finger Digging Adventure for iPhone, iPad and Mac</title>
+<meta name="description" content="Guide a tiny worm through a living underground world. Carve tunnels, eat to survive, dodge stone and lava, collect Amber and discover how deep you can go. For iPhone, iPad and Mac.">
+<link rel="canonical" href="https://wormwell.github.io/">
+<meta name="theme-color" content="#170d09">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wormwell">
+<meta property="og:url" content="https://wormwell.github.io/">
+<meta property="og:title" content="Wormwell — How deep can you go?">
+<meta property="og:description" content="One finger. One tiny worm. A whole world below.">
+<meta property="og:image" content="https://wormwell.github.io/media/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preload" as="image" href="media/hero-art.webp" type="image/webp">
+<link rel="stylesheet" href="styles.css">
+<script src="site.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Wormwell","operatingSystem":"iOS, iPadOS, macOS","applicationCategory":"GameApplication","gamePlatform":["iPhone","iPad","Mac"],"genre":["Arcade","Casual","Adventure"],"url":"https://wormwell.github.io/","image":"https://wormwell.github.io/media/og.jpg"}</script>
+</head>
+<body class="home">
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="ground" aria-hidden="true"><div class="ground-vignette"></div></div>
+<!-- The worm burrows down the page as you scroll and crawls back up its tunnel when you scroll up (site.js). -->
+<canvas class="burrow-layer" data-burrow aria-hidden="true"></canvas>
+
+<div class="gauge" aria-hidden="true">
+  <span class="chip"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v14m-6-5 6 6 6-6M5 21h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-gauge-depth>0 m</b><small data-gauge-zone>Meadow</small></span></span>
+  <span class="chip"><svg class="gem" viewBox="0 0 24 24"><path d="M12 2 20 7v10l-8 5-8-5V7Z"/><path d="M12 2v10l8-5Zm-8 5 8 5v10"/></svg><b data-gauge-amber>0</b></span>
+</div>
+
+<header class="site-nav" data-nav>
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="./"><img src="icon.png" alt="" width="42" height="42"><span>Wormwell</span></a>
+    <ul>
+      <li><a href="#play">How it plays</a></li>
+      <li><a href="#gallery">Screenshots</a></li>
+      <li><a href="#depths">The depths</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-inner">
+    <div>
+      <p class="kicker">One-finger digging adventure · iPhone, iPad &amp; Mac</p>
+      <h1 id="hero-title">How deep <em>can you go?</em></h1>
+      <p class="lead">Guide a tiny worm through a living underground world. Carve tunnels, eat to keep your energy up, slip past stone and lava, and find out what waits below the next layer.</p>
+      <div class="actions">
+        <span class="button store"><svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8ZM14.1 5.8c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3Z"/></svg><span><small>Coming soon on the</small>App Store</span></span>
+        <a class="button ghost" href="#play">Try digging</a>
+      </div>
+      <ul class="hero-facts" aria-label="At a glance">
+        <li><b>14</b> underground zones</li>
+        <li><b>24</b> run abilities</li>
+        <li><b>49</b> achievements</li>
+      </ul>
+    </div>
+    <div class="hero-art">
+      <div class="burrow">
+        <picture>
+          <source srcset="media/hero-art.webp" type="image/webp">
+          <img src="media/hero-art.jpg" alt="The Wormwell hero, a cheerful pink worm in a red polka-dot bandana, peeking out of a warm burrow next to a glowing piece of Amber." width="1400" height="1400">
+        </picture>
+        <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <span class="chip c1" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v14m-6-5 6 6 6-6M5 21h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>1,519 m</b><small>Basalt Shelf</small></span></span>
+      <span class="chip c2" aria-hidden="true"><svg class="ic bolt-ic" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg><span class="mini-bar"><i></i></span></span>
+      <span class="chip c3" aria-hidden="true"><svg class="gem" viewBox="0 0 24 24"><path d="M12 2 20 7v10l-8 5-8-5V7Z"/><path d="M12 2v10l8-5Zm-8 5 8 5v10"/></svg><b>3,241</b></span>
+    </div>
+  </div>
+</section>
+
+<main id="main">
+
+  <section class="section" id="play" aria-labelledby="play-title">
+    <div class="split">
+      <div class="reveal">
+        <p class="eyebrow">One finger · Anywhere on screen</p>
+        <h2 id="play-title">Touch anywhere.<br>Steer the dig.</h2>
+        <p class="section-lead">Put a finger down anywhere and drag the way you want to go. Let go and the worm keeps crawling. Swipe sharply to lunge. Every metre of soil costs energy, and food is the only way to get it back.</p>
+        <p class="try-hint"><span class="pulse-dot" aria-hidden="true"></span>Try it: drag inside the soil to dig.</p>
+        <p class="keys">On Mac: drag with the mouse or trackpad, or steer with <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd>. Hold <kbd>Space</kbd> and release to lunge.</p>
+      </div>
+
+      <!-- Interactive mini dig: steer with a drag or the arrow keys, eat sprouts, collect Amber. -->
+      <div class="demo glass reveal">
+        <canvas data-demo tabindex="0" role="application" aria-label="Digging demo. Drag inside the soil, or focus it and use the arrow keys, to steer the worm. A quick swipe or the space bar lunges."></canvas>
+        <div class="demo-hud" aria-hidden="true">
+          <span class="chip"><svg class="gem" viewBox="0 0 24 24"><path d="M12 2 20 7v10l-8 5-8-5V7Z"/><path d="M12 2v10l8-5Zm-8 5 8 5v10"/></svg><b data-demo-amber>0</b></span>
+          <div class="demo-depth"><b data-demo-depth>0</b><span>m</span><span class="demo-energy"><i data-demo-energy></i></span></div>
+          <span class="chip"><svg class="ic bolt-ic" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg><b data-demo-energy-n>100</b></span>
+        </div>
+        <p class="demo-status" data-demo-status aria-live="polite">Drag to steer</p>
+      </div>
+    </div>
+
+    <div class="features">
+      <article class="card reveal">
+        <span class="badge-ic"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 1 3 3v6.2l3.6-1.1a2 2 0 0 1 2.4 2.6L19 19a5 5 0 0 1-4.7 3H11a5 5 0 0 1-4-2l-3.3-4.4a1.8 1.8 0 0 1 2.6-2.4L9 15V5a3 3 0 0 1 3-3Z"/></svg></span>
+        <span class="number">01 · Steer</span>
+        <h3>Smooth, not snake-like</h3>
+        <p>The worm turns in a soft arc in any of 360 degrees. No grid, no sharp corners, no stick to hunt for.</p>
+      </article>
+      <article class="card reveal">
+        <span class="badge-ic pink"><svg viewBox="0 0 24 24"><path d="M4 20 15 9m0 0h-6m6 0v6M14 4h6v6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="number">02 · Lunge</span>
+        <h3>Flick to break through</h3>
+        <p>A sharp swipe throws the worm forward. A fast one cracks small stones. It costs more than crawling, so pick your moment.</p>
+      </article>
+      <article class="card reveal">
+        <span class="badge-ic green"><svg viewBox="0 0 24 24"><path d="M12 22v-8m0 0c0-4-3-6-7-6 0 4 3 6 7 6Zm0-2c0-5 3-8 8-8 0 5-3 8-8 8Z"/></svg></span>
+        <span class="number">03 · Eat</span>
+        <h3>One resource: energy</h3>
+        <p>Sprouts, grubs and mushrooms keep you going. Take the short risky way or the long safe one. The run ends when energy runs out.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="gallery" aria-labelledby="gallery-title">
+    <div class="section narrow-top reveal">
+      <p class="eyebrow">Real gameplay</p>
+      <h2 id="gallery-title">A whole world under the grass.</h2>
+    </div>
+    <div class="gallery" data-gallery>
+      <div class="gallery-tabs" role="tablist" aria-label="Screenshots">
+        <button role="tab" aria-selected="true" aria-controls="shot-1" id="tab-1" data-tab><span class="t-n">01</span><b>Meet your worm</b><small>Pick a camp, then dig in.</small><i class="t-progress"></i></button>
+        <button role="tab" aria-selected="false" aria-controls="shot-2" id="tab-2" data-tab tabindex="-1"><span class="t-n">02</span><b>Dig the deep</b><small>Every metre is your score.</small><i class="t-progress"></i></button>
+        <button role="tab" aria-selected="false" aria-controls="shot-3" id="tab-3" data-tab tabindex="-1"><span class="t-n">03</span><b>Eat to survive</b><small>Food is the only way to refill.</small><i class="t-progress"></i></button>
+        <button role="tab" aria-selected="false" aria-controls="shot-4" id="tab-4" data-tab tabindex="-1"><span class="t-n">04</span><b>Wonder below</b><small>Crystal caves and flooded shafts.</small><i class="t-progress"></i></button>
+        <button role="tab" aria-selected="false" aria-controls="shot-5" id="tab-5" data-tab tabindex="-1"><span class="t-n">05</span><b>Build your run</b><small>Golden Seeds grant new abilities.</small><i class="t-progress"></i></button>
+        <button role="tab" aria-selected="false" aria-controls="shot-6" id="tab-6" data-tab tabindex="-1"><span class="t-n">06</span><b>Grow stronger</b><small>Spend Amber on lasting upgrades.</small><i class="t-progress"></i></button>
+        <button role="tab" aria-selected="false" aria-controls="shot-7" id="tab-7" data-tab tabindex="-1"><span class="t-n">07</span><b>Dress your worm</b><small>Hats, hair, eyes, scarves and more.</small><i class="t-progress"></i></button>
+      </div>
+      <div class="phone">
+        <div class="screen">
+          <figure class="is-active" id="shot-1" role="tabpanel" aria-labelledby="tab-1" data-shot><picture><source srcset="media/01-meet-your-worm.webp" type="image/webp"><img src="media/01-meet-your-worm.jpg" alt="The Wormwell home screen: the worm in a helmet and round glasses sits in an underground camp at 1,500 metres, above the gold Dig In button." width="644" height="1400" decoding="async"></picture></figure>
+          <figure id="shot-2" role="tabpanel" aria-labelledby="tab-2" data-shot><picture><source srcset="media/02-dig-the-deep.webp" type="image/webp"><img src="media/02-dig-the-deep.jpg" alt="The worm digs through dark basalt at 1,519 metres with a headlamp, surrounded by glowing Amber and a crystal cave." width="644" height="1400" loading="lazy" decoding="async"></picture></figure>
+          <figure id="shot-3" role="tabpanel" aria-labelledby="tab-3" data-shot><picture><source srcset="media/03-eat-to-survive.webp" type="image/webp"><img src="media/03-eat-to-survive.jpg" alt="Wet blue-grey earth at 313 metres, with Amber, rocks and food along the tunnel." width="644" height="1400" loading="lazy" decoding="async"></picture></figure>
+          <figure id="shot-4" role="tabpanel" aria-labelledby="tab-4" data-shot><picture><source srcset="media/04-wonder-below.webp" type="image/webp"><img src="media/04-wonder-below.jpg" alt="The crystal abyss at 4,014 metres: violet crystals, deep blue rock and an underground stream." width="644" height="1400" loading="lazy" decoding="async"></picture></figure>
+          <figure id="shot-5" role="tabpanel" aria-labelledby="tab-5" data-shot><picture><source srcset="media/05-build-your-run.webp" type="image/webp"><img src="media/05-build-your-run.jpg" alt="A Golden Seed offers three ability cards: Coiled Spring, Razor's Edge and Burrow Burst." width="644" height="1400" loading="lazy" decoding="async"></picture></figure>
+          <figure id="shot-6" role="tabpanel" aria-labelledby="tab-6" data-shot><picture><source srcset="media/06-grow-stronger.webp" type="image/webp"><img src="media/06-grow-stronger.jpg" alt="The Upgrades screen with Speed Boost, Stone Eater, Energy Capacity and Better Digestion." width="644" height="1400" loading="lazy" decoding="async"></picture></figure>
+          <figure id="shot-7" role="tabpanel" aria-labelledby="tab-7" data-shot><picture><source srcset="media/07-dress-your-worm.webp" type="image/webp"><img src="media/07-dress-your-worm.jpg" alt="The Wardrobe catalogue with Looks, Head, Eyes, Mustaches, Tattoos and Neck categories." width="644" height="1400" loading="lazy" decoding="async"></picture></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="depths" aria-labelledby="depths-title">
+    <div class="reveal">
+      <p class="eyebrow">Wonder below</p>
+      <h2 id="depths-title">Every zone is a new world.</h2>
+      <p class="section-lead">The deeper you go, the stranger it gets. Each zone has its own soil, light and dangers. Learn to read the colours, follow the soft pockets and save energy for what lies below.</p>
+    </div>
+    <ol class="strata reveal" aria-label="Underground zones">
+      <li class="stratum z1"><span class="z-depth">0 m</span><div><h3>Roots &amp; Soil</h3><p>Soft earth, roots and the first stones.</p></div><span class="z-tag">Start</span></li>
+      <li class="stratum z2"><span class="z-depth">100 m</span><div><h3>Clay &amp; Stone</h3><p>Terracotta, ochre and boulders to steer around.</p></div><span class="z-tag">Rocks</span></li>
+      <li class="stratum z3"><span class="z-depth">300 m</span><div><h3>Underground Waters</h3><p>Wet slate and currents that pull you along.</p></div><span class="z-tag">Currents</span></li>
+      <li class="stratum z4"><span class="z-depth">600 m</span><div><h3>Glowing Caverns</h3><p>Luminous fungi in huge hollow caves.</p></div><span class="z-tag">Caves</span></li>
+      <li class="stratum z5"><span class="z-depth">1,000 m</span><div><h3>Hot Depths</h3><p>Ash rock, ember light and the first lava.</p></div><span class="z-tag">Heat</span></li>
+      <li class="stratum z6"><span class="z-depth">1,500 m</span><div><h3>Basalt Shelf</h3><p>Cold graphite and layer after layer of stone.</p></div><span class="z-tag">Stone</span></li>
+      <li class="stratum z7"><span class="z-depth">2,500 m</span><div><h3>Magma Rivers</h3><p>Dark slag split by long glowing veins.</p></div><span class="z-tag">Lava</span></li>
+      <li class="stratum z8"><span class="z-depth">4,000 m</span><div><h3>Crystal Abyss</h3><p>Blue and violet crystal over wide voids.</p></div><span class="z-tag">Crystal</span></li>
+      <li class="stratum z9"><span class="z-depth">7,000 m</span><div><h3>Ancient Core</h3><p>Old rose-dark rock, older than anything above.</p></div><span class="z-tag">Ancient</span></li>
+      <li class="stratum z10"><span class="z-depth">11,000 m</span><div><h3>Fossil Vaults</h3><p>Soft chalk, bones and vaulted chambers.</p></div><span class="z-tag">Fossils</span></li>
+      <li class="stratum z11"><span class="z-depth">16,000 m</span><div><h3>Iron Roots</h3><p>Rust and ore, rich in Amber, threaded with stone.</p></div><span class="z-tag">Ore</span></li>
+      <li class="stratum z12"><span class="z-depth">22,000 m</span><div><h3>Sunken Sea</h3><p>Thick silt, flooded shafts and strong currents.</p></div><span class="z-tag">Flood</span></li>
+      <li class="stratum z13"><span class="z-depth">29,000 m</span><div><h3>Obsidian Halls</h3><p>Fast but costly black glass.</p></div><span class="z-tag">Glass</span></li>
+      <li class="stratum z14"><span class="z-depth">37,000 m</span><div><h3>Heart of the World</h3><p>Warm red pulsing light. It never ends.</p></div><span class="z-tag">Endless</span></li>
+    </ol>
+  </section>
+
+  <section class="section" aria-labelledby="grow-title">
+    <div class="reveal">
+      <p class="eyebrow">Between runs</p>
+      <h2 id="grow-title">Dig, camp, return deeper.</h2>
+      <p class="section-lead">One run will not reach the bottom. Pass a camp and your next run can start there. Spend the Amber you find on upgrades, adapt to each zone and push the record a little further.</p>
+    </div>
+    <div class="grow">
+      <article class="card reveal">
+        <span class="badge-ic"><svg viewBox="0 0 24 24"><path d="M12 3 2 20h20Zm0 6 4.5 8h-9Z"/></svg></span>
+        <h3>Camps</h3>
+        <p>Lantern-lit domes deep below. Reach one and pick it as your next starting point.</p>
+      </article>
+      <article class="card reveal">
+        <span class="badge-ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg></span>
+        <h3>12 upgrade paths</h3>
+        <p>Speed, digestion, capacity, food sense, stone eating and more, each with 15 levels.</p>
+      </article>
+      <article class="card reveal">
+        <span class="badge-ic violet"><svg viewBox="0 0 24 24"><path d="m12 2 3 7 7 1-5 5 1.5 7L12 18l-6.5 4L7 15 2 10l7-1Z"/></svg></span>
+        <h3>24 run abilities</h3>
+        <p>Golden Seeds offer three cards. Level an ability to 5 and it becomes a super form.</p>
+      </article>
+      <article class="card reveal">
+        <span class="badge-ic blue"><svg viewBox="0 0 24 24"><path d="M12 2 20 7v10l-8 5-8-5V7Z"/></svg></span>
+        <h3>Zone adaptations</h3>
+        <p>Pressure builds in each deep zone. Adapt to it, then go further.</p>
+      </article>
+      <article class="card reveal">
+        <span class="badge-ic green"><svg viewBox="0 0 24 24"><path d="M9 3h6v3h1a3 3 0 0 1 3 3v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a3 3 0 0 1 3-3h1Zm-1 10v3h8v-3Z"/></svg></span>
+        <h3>Gear &amp; backpack</h3>
+        <p>A helmet and headlamp for the dark, plus quick items for when a run gets tight.</p>
+      </article>
+      <article class="card reveal">
+        <span class="badge-ic pink"><svg viewBox="0 0 24 24"><path d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0Z"/></svg></span>
+        <h3>Wardrobe</h3>
+        <p>Hats, hair, glasses, mustaches, tattoos and scarves. Looks only, never an advantage.</p>
+      </article>
+    </div>
+    <ul class="stats reveal" aria-label="Wormwell in numbers">
+      <li class="glass"><b>14</b><span>zones to explore</span></li>
+      <li class="glass"><b>49</b><span>achievements</span></li>
+      <li class="glass"><b>3</b><span>Game Center leaderboards</span></li>
+      <li class="glass"><b>14</b><span>languages</span></li>
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="fair-title">
+    <div class="fair glass reveal">
+      <div>
+        <p class="eyebrow">Built with respect</p>
+        <h2 id="fair-title">Your dig,<br>not a feed.</h2>
+        <p class="muted">Depth is the score and everything that helps you dig deeper can be earned by playing. Game Center is optional. Amber packs exist for players who want a head start.</p>
+      </div>
+      <ul>
+        <li>No advertising</li>
+        <li>No tracking or analytics SDKs</li>
+        <li>No account to create</li>
+        <li>The core game plays offline</li>
+        <li>No pop-up offers during or after a run</li>
+        <li>Wardrobe items are looks only</li>
+        <li>Native on iPhone, iPad and Mac</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="finale" aria-labelledby="finale-title">
+    <div class="finale-inner reveal">
+      <img src="icon.png" alt="" width="112" height="112" class="finale-icon">
+      <h2 id="finale-title">The world below<br>is waiting.</h2>
+      <p class="section-lead">Coming soon to iPhone, iPad and Mac.</p>
+      <div class="actions center">
+        <span class="button store"><svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8ZM14.1 5.8c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3Z"/></svg><span><small>Coming soon on the</small>App Store</span></span>
+        <a class="button ghost" href="contact.html">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© <span data-year>2026</span> Wormwell · <a href="mailto:wormwell.game@gmail.com">wormwell.game@gmail.com</a></span>
+  <nav aria-label="Footer"><a href="support.html">Support</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+</footer>
+</body>
+</html>
